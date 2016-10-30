@@ -9,13 +9,13 @@ pwnserver
 	:alt: License
 
 
-.. image:: https://github.com/walchko/pwnserver/blob/master/pics/screenshot.png
+.. image:: https://raw.githubusercontent.com/walchko/pwnserver/master/pics/screenshot.png
 	:align: center
 	:alt: Screenshot
 
 Runs a simple web server that shows if your account information has been
-compromised. This polls `haveibeenpwned <https://haveibeenpwned.com>`_ and
-returns any compromised accounts found.
+compromised. This polls `haveibeenpwned <https://haveibeenpwned.com>`_ every
+12 hrs and returns any compromised accounts found.
 
 Install
 -----------
