@@ -1,10 +1,11 @@
 pwnserver
 ============================
 
+.. image:: https://github.com/walchko/pwnserver/blob/master/pics/screenshot.png
+	:align: center
+
 Runs a simple web server that shows if your account information has been
 compromised.
-
-.. image::hi.png
 
 Install
 -----------
