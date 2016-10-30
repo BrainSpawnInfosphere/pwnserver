@@ -3,7 +3,6 @@ from setuptools import setup, find_packages
 from pwn import __version__ as VERSION
 from setuptools.command.test import test as TestCommand
 
-# VERSION = '0.1.0'
 
 class NoseTestCommand(TestCommand):
 	pass

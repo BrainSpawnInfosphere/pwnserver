@@ -1,8 +1,17 @@
 pwnserver
 ============================
 
+.. image:: https://img.shields.io/pypi/v/pwnserver.svg
+	:target: https://pypi.python.org/pypi/pwnserver/
+	:alt: Latest Version
+.. image:: https://img.shields.io/pypi/l/pwnserver.svg
+	:target: https://pypi.python.org/pypi/pwnserver/
+	:alt: License
+
+
 .. image:: https://github.com/walchko/pwnserver/blob/master/pics/screenshot.png
 	:align: center
+	:alt: Screenshot
 
 Runs a simple web server that shows if your account information has been
 compromised.
@@ -31,7 +40,7 @@ Usage
 
 To run the server:
 
-..
+::
 	pwnserver --email emails.json --port 9000
 
 You need a config file with names and emails:
@@ -56,6 +65,6 @@ Change Log
 -------------
 
 ========== ======= =============================
-2016-10-29 0.4.1   published to PyPi
+2016-10-29 0.1.1   published to PyPi
 2016-09-16 0.0.1   init
 ========== ======= =============================
