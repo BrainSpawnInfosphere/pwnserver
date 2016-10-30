@@ -1,7 +1,36 @@
 #!/usr/bin/env python
 
+"""
+A collection of classes to make creating simple dynamic pages easier:
+
+* CSS
+* HTML
+
+Example:
+	css = '''
+		body {
+			background-color: white;
+		}
+
+		h1 {
+			color: black;
+			text-align: center;
+		}
+	'''
+
+	html = HTML()
+	html.css(css)
+	html.h1('Welcome to my page')
+	html.img('mypic.jpg')
+	html.p('this is a paragraph about me')
+	html.footer('<a href="https://github.com/walchko">my code</a>')
+	print html
+"""
+
+
 class Base(object):
 	"""
+	This is the base class, not sure it is totally useful.
 	"""
 	def write(self, filename):
 		print('need to enable writing')
@@ -9,9 +38,13 @@ class Base(object):
 
 class CSS(Base):
 	"""
+	This class helps with some html css parameters.
 	"""
 	@staticmethod
 	def basic():
+		"""
+		Returns a simple css.
+		"""
 		basic = """
 		body {
 			background-color: white;
@@ -31,6 +64,10 @@ class CSS(Base):
 
 	@staticmethod
 	def cssTable(color='#dddddd'):
+		"""
+		A simple table css that alternates the color of every other row by
+		a use defined color (the default is gray).
+		"""
 		css = """
 		table {
 			font-family: arial, sans-serif;
@@ -49,6 +86,10 @@ class CSS(Base):
 
 	@staticmethod
 	def cssToolTip(width=200):
+		"""
+		Css parameters to have a nice tool tip popup box of a user defined
+		width (default is 200px).
+		"""
 		css = """
 		.tooltip {
 		    position: relative;
@@ -98,17 +139,21 @@ class CSS(Base):
 
 class HTML(Base):
 	"""
+	This class handles the dynamic contruction of a web page.
 	"""
 	def __init__(self):
-		# self.page = '<!DOCTYPE html><html><body></body></html>'
-		# self.parts = ['<!DOCTYPE html>', '<html>', '<head>', '</head>', '<body>', '</body>', '</html>']
-		# pass
 		self.clear()
 
 	def clear(self):
+		"""
+		Resets the elements of the page back to an empty page.
+		"""
 		self.parts = ['<!DOCTYPE html>', '<html>', '<head>', '<style>', '</style>', '</head>', '<body>', '</body>', '</html>']
 
 	def css(self, css, bgcolor=None):
+		"""
+		Given a css, it inserts it into the header of the html page.
+		"""
 		if bgcolor:
 			n = self.find('</style>')
 			if n:
@@ -137,26 +182,41 @@ class HTML(Base):
 			self.parts.insert(n, '<link href="https://cdn.rawgit.com/walchko/font-linux/v0.6/assets/font-linux.css" rel="stylesheet">')
 
 	def h1(self, string):
+		"""
+		Level 1 heading
+		"""
 		n = self.find('</body>')
 		if n:
 			self.parts.insert(n, '<h1>{}</h1>'.format(string))
 
 	def h2(self, string):
+		"""
+		Level 2 heading
+		"""
 		n = self.find('</body>')
 		if n:
 			self.parts.insert(n, '<h2>{}</h2>'.format(string))
 
 	def h3(self, string):
+		"""
+		Level 3 heading
+		"""
 		n = self.find('</body>')
 		if n:
 			self.parts.insert(n, '<h3>{}</h3>'.format(string))
 
 	def p(self, string):
+		"""
+		paragraph
+		"""
 		n = self.find('</body>')
 		if n:
 			self.parts.insert(n, '<p>{}</p>'.format(string))
 
 	def javascript(self, code):
+		"""
+		Given the code for some js, it is inserted into the header of the page.
+		"""
 		n = self.find('</body>')
 		if n:
 			self.parts.insert(n, '<script>{}</script>'.format(code))
@@ -167,6 +227,9 @@ class HTML(Base):
 			self.parts.insert(n, '<link rel="stylesheet" href="{}}">'.format(css))
 
 	def table(self, table, class_name=None):
+		"""
+		Create a simple table. The table info is passed in via an array of rows.
+		"""
 		# n = self.find('</style>')
 		# if n:
 		# 	if not self.table_css:
@@ -193,6 +256,9 @@ class HTML(Base):
 			self.parts.insert(n+offset+2, '</table>')
 
 	def img(self, image, w=None, h=None):
+		"""
+		Insert an image with optional height and width parameters.
+		"""
 		n = self.find('</body>')
 		if n:
 			if w and h:
@@ -203,6 +269,9 @@ class HTML(Base):
 				self.parts.insert(n, '<img src="{}" alt="img">'.format(image))
 
 	def iframe(self, image, w=None, h=None):
+		"""
+		Insert an iframe with optional height and width parameters.
+		"""
 		n = self.find('</body>')
 		if n:
 			if w and h:
@@ -213,43 +282,27 @@ class HTML(Base):
 				self.parts.insert(n, '<iframe src="{}" alt="img">'.format(image))
 
 	def footer(self, string):
+		"""
+		Insert a footer on your page, you can only have one.
+		"""
 		n = self.find('</body>')
 		if n:
 			self.parts.insert(n, '<footer>{}</footer>'.format(string))
 
 	def __str__(self):
+		"""
+		Returns a string of all of the html elements in the page.
+		"""
 		# print self.parts
 		return ''.join(self.parts)
 		# return str(self.parts)
 
 	def __repr__(self):
+		"""
+		Returns a string of all of the html elements in the page.
+		"""
 		return self.__str__()
 
 
-def main():
-	css = """
-	footer {
-		padding: 1em;
-		color: white;
-		background-color: black;
-		clear: left;
-		text-align: center;
-	}
-	"""
-	css += CSS.cssTable()
-	html = HTML()
-	html.css(css)
-	html.p('this is a test')
-	html.p('second line')
-	html.p('third line')
-	html.table([['kw@hotmail.com', 'Good', ''], ['hw@hotmail.com', 'Bad', '20 Sept 2014']], 'myClass')
-	# html.table([['/mnt', '22GB'],['/', '123 GB']])
-	html.p('this is fun!')
-	# html.table([['a','b'], [1,2], [3,4]])
-	# html.iframe('http://giphy.com/embed/8w8cs5IcECPg4', 400, 400)
-	html.img('http://www.walldevil.com/wallpapers/w11/78194-women-boobs.jpg', 400)
-	html.footer('<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" />')
-	print html
-
 if __name__ == '__main__':
-	main()
+	print 'hello'

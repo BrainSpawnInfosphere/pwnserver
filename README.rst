@@ -62,6 +62,17 @@ You need a config file with names and emails:
 			]
 	}
 
+If you want to use some of the classes and functions:
+
+.. code-block:: python
+
+	from pwn import HTML, readJson
+
+	html = HTML()
+	html.p('hi')
+
+	data = readJson('myfile.json')
+
 Raw Output
 ------------
 

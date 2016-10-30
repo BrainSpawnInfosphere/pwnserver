@@ -3,17 +3,15 @@
 
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 from socket import gethostname
-# from socket import gethostbyname
-# import BaseHTTPServer
-# import StringIO
 import time
-# import logging
-# import platform
 import argparse
 from Html5 import HTML, CSS
 import pwn
 import threading
 
+"""
+This implements the main server code.
+"""
 
 class PwmThread(threading.Thread):
 	def __init__(self, filename):
@@ -149,7 +147,7 @@ class ServerHandler(BaseHTTPRequestHandler):
 					table.append(row)
 				html.table(table)
 
-			html.footer('<a href="https://haveibeenpwned.com/">`;--</a> &nbsp &nbsp &nbsp &nbsp &nbsp <a href="https://github.com/walchko"><i class="fl-github"></i></a>')
+			html.footer('<a href="https://haveibeenpwned.com/">`;--</a> &nbsp &nbsp &nbsp &nbsp &nbsp <a href="https://github.com/walchko/pwnserver"><i class="fl-github"></i></a>')
 
 			self.wfile.write(str(html))
 			return
