@@ -14,7 +14,7 @@ from time import sleep
 
 # API https address
 APIURL = "https://haveibeenpwned.com/api/v2/breachedAccount/"
-truncate = '?truncateResponse=false'
+truncate = '?truncateResponse=true'
 
 # standard HTTP response codes used
 ACCOUNT_IS_BAD   = 200
