@@ -50,15 +50,11 @@ class PwmThread(threading.Thread):
 				results[person] = []
 				for email in array:
 					ret, data = pwn.isBreach(email)
-					# ans = []
 					if ret:
 						for entry in data:
 							results[person].append({'email': email, 'status': True, 'Domain': entry['Domain'], 'BreachDate': entry['BreachDate'], 'Description': entry['Description']})
 					else:
 						results[person].append({'email': email, 'status': False})
-
-					# for i in ans:
-					# 	results[person].append(i)
 
 					time.sleep(2)
 
@@ -128,7 +124,6 @@ class ServerHandler(BaseHTTPRequestHandler):
 			"""
 			css += CSS.cssTable()
 			css += CSS.cssToolTip(400)  # set tooltip box width 400px
-			# print css
 
 			html = HTML()
 			html.css(css)
