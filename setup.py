@@ -62,7 +62,7 @@ setup(
 	],
 	url="https://github.com/walchko/pwnserver",
 	long_description=readme,
-	packages=['pwnserver'],
+	packages=['pwn'],
 	# packages=find_packages(),
 	cmdclass={
 		'test': NoseTestCommand,

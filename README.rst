@@ -42,7 +42,7 @@ You need a config file with names and emails:
 			[
 				"bob.tom@google.com",
 				"bob.tom@yahoo.com"
-			]
+			],
 		"tom":
 			[
 				"tom.jones@google.com",

@@ -2,3 +2,4 @@
 pwn_results.json
 *.pyc
 test
+pwnserver.egg-info
