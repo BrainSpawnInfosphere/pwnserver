@@ -10,7 +10,7 @@ try:
 	import simplejson as json
 except:
 	import json
-from time import sleep
+# from time import sleep
 
 # API https address
 APIURL = "https://haveibeenpwned.com/api/v2/breachedAccount/"
@@ -47,6 +47,7 @@ included email addresses and salted hashes of passwords (half of them SHA1,
 half of them bcrypt).'}]
 """
 
+
 def readJson(fname):
 	"""
 	Reads a Json file
@@ -60,6 +61,7 @@ def readJson(fname):
 		return data
 	except IOError:
 		raise Exception('Could not open {0!s} for reading'.format((fname)))
+
 
 def writeJson(fname, data):
 	"""
@@ -80,7 +82,7 @@ def isBreach(email):
 	in: email/account
 	out: http status code, 200 bad, 404 good
 	"""
-	url = APIURL+email
+	url = APIURL + email
 	resp = requests.get(url, verify=True)
 
 	if resp.status_code == ACCOUNT_IS_GOOD:

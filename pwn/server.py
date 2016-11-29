@@ -13,6 +13,7 @@ import threading
 This implements the main server code.
 """
 
+
 class PwmThread(threading.Thread):
 	def __init__(self, filename):
 		threading.Thread.__init__(self)
@@ -39,12 +40,12 @@ class PwmThread(threading.Thread):
 			'tom': [ ... ]
 			'sam': [ ... ]
 		}
-		time.strftime('%H%M on %A %-d %B %Y')
+		time.strftime('%H%M on %A %d %B %Y')
 		"""
 		while True:
 			accounts = pwn.readJson(self.json)
 			results = {}
-			results['date'] = time.strftime('%H%M on %A %-d %B %Y')
+			results['date'] = time.strftime('%H%M on %A %d %B %Y')
 			print('<<<<<<<<< checking >>>>>>>>>>>>>>')
 			for person, array in accounts.items():
 				results[person] = []
@@ -62,7 +63,7 @@ class PwmThread(threading.Thread):
 
 			print('Updated and save to json file')
 
-			time.sleep(12*3600)
+			time.sleep(12 * 3600)
 
 
 class ServerHandler(BaseHTTPRequestHandler):
@@ -103,15 +104,15 @@ class ServerHandler(BaseHTTPRequestHandler):
 				}
 
 				a:link {
-				    color: gray;
+					color: gray;
 				}
 
 				a:visited {
-				    color: gray;
+					color: gray;
 				}
 
 				a:hover {
-				    color: white;
+					color: white;
 				}
 
 				footer {
